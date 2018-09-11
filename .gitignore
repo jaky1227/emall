@@ -1,3 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea
-ssm_emall.iml
+*.idea
+emall.iml
+target
+将删除 target/generated-sources/
