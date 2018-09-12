@@ -5,6 +5,7 @@ import com.emall.model.User;
 import com.emall.dao.ProductMapper;
 import com.emall.dao.TrxMapper;
 import com.emall.service.TrxService;
+import com.emall.utils.ConvertPriceUnitUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,8 +23,11 @@ public class TrxServiceImpl implements TrxService {
     @Override
     public List<Product> getBuyList(Integer userId) {
         List<Product> productList = trxMapper.getBuyList(userId);
-
-
+    //将价格转换元
+        for(Product product:productList){
+            product.setBuyPrice(ConvertPriceUnitUtil
+                    .convertF2Y(product.getBuyPrice()));
+        }
         return productList;
     }
 
